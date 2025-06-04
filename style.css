@@ -119,16 +119,26 @@ section {
 
 .team-card .button-link {
     display: inline-block;
-    padding: 10px 20px;
-    background: #0077b6;
-    color: white;
+    margin-bottom: 0.2em;
+    font-weight: bold;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s;
+    color: #fff;
+    background: #007acc;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    transition: background 0.2s;
 }
 
 .team-card .button-link:hover {
-    background: #005f73;
+    background: #005fa3;
+}
+
+.url-text {
+    display: block;
+    color: #333;
+    font-size: 0.95em;
+    margin-bottom: 1em;
+    word-break: break-all;
 }
 
 footer {

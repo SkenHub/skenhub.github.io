@@ -68,44 +68,48 @@
         <li>2025年4月 新年度活動開始</li>
         <li>2025年3月 関西春ロボコン出場決定！</li>
       </ul>
-      <p>
-        最新の活動情報はブログをご覧ください：<br>
-        <a href="https://s-kenblog.blogspot.com/" target="_blank" class="button-link">創造技術研究会ブログへ</a>
-      </p>
     </section>
 
-    <!-- SNSタイムライン -->
+    <!-- SNS・ブログ -->
     <section id="sns">
-      <h2>SNSタイムライン</h2>
-      <h3>創造技術研究会ブログ 最新記事</h3>
-      <ul id="blog-feed"></ul>
-      <script>
-        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://s-kenblog.blogspot.com/feeds/posts/default')
-          .then(res => res.json())
-          .then(data => {
-            const ul = document.getElementById('blog-feed');
-            data.items.slice(0,5).forEach(entry => {
-              const li = document.createElement('li');
-              li.innerHTML = `<a href="${entry.link}" target="_blank">${entry.title}</a>`;
-              ul.appendChild(li);
-            });
-          })
-          .catch(() => {
-            document.getElementById('blog-feed').innerHTML = '<li>記事を取得できませんでした。</li>';
-          });
-      </script>
-      <p>
-        <a href="https://twitter.com/mnct_sken" target="_blank" rel="noopener" class="button-link">
-          X（旧Twitter）公式アカウントはこちら<br>
-          https://twitter.com/mnct_sken
-        </a>
-      </p>
-      <p>
-        <a href="https://s-kenblog.blogspot.com/" target="_blank" rel="noopener" class="button-link">
-          創造技術研究会ブログはこちら<br>
-          https://s-kenblog.blogspot.com/
-        </a>
-      </p>
+      <h2>SNS・ブログ</h2>
+      <div class="sns-columns">
+        <div class="sns-block">
+          <h3>創造技術研究会ブログ 最新記事</h3>
+          <ul id="blog-feed"></ul>
+          <script>
+            fetch('https://api.rss2json.com/v1/api.json?rss_url=https://s-kenblog.blogspot.com/feeds/posts/default')
+              .then(res => res.json())
+              .then(data => {
+                const ul = document.getElementById('blog-feed');
+                data.items.slice(0,5).forEach(entry => {
+                  const li = document.createElement('li');
+                  li.innerHTML = `<a href="${entry.link}" target="_blank">${entry.title}</a>`;
+                  ul.appendChild(li);
+                });
+              })
+              .catch(() => {
+                document.getElementById('blog-feed').innerHTML = '<li>記事を取得できませんでした。</li>';
+              });
+          </script>
+          <p>
+            最新の活動情報はブログをご覧ください：<br>
+            <a href="https://s-kenblog.blogspot.com/" target="_blank" class="button-link">
+              創造技術研究会ブログはこちら
+            </a><br>
+            <span class="url-text">https://s-kenblog.blogspot.com/</span>
+          </p>
+        </div>
+        <div class="sns-block">
+          <h3>X（旧Twitter）</h3>
+          <p>
+            <a href="https://twitter.com/mnct_sken" target="_blank" rel="noopener" class="button-link">
+              X（旧Twitter）公式アカウントはこちら
+            </a><br>
+            <span class="url-text">https://twitter.com/mnct_sken</span>
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- お問い合わせ -->
