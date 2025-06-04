@@ -77,14 +77,29 @@
     <!-- SNSタイムライン -->
     <section id="sns">
       <h2>SNSタイムライン</h2>
-      <h3>X（旧Twitter）</h3>
-      <a class="twitter-timeline"
-         href="https://twitter.com/mnct_sken?ref_src=twsrc%5Etfw"
-         data-height="600"
-         data-theme="light">
-        Tweets by @mnct_sken
-      </a>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <h3>創造技術研究会ブログ 最新記事</h3>
+      <ul id="blog-feed"></ul>
+      <script>
+        fetch('https://s-kenblog.blogspot.com/feeds/posts/default?alt=json')
+          .then(res => res.json())
+          .then(data => {
+            const ul = document.getElementById('blog-feed');
+            data.feed.entry.slice(0,5).forEach(entry => {
+              const li = document.createElement('li');
+              const link = entry.link.find(l => l.rel === 'alternate').href;
+              li.innerHTML = `<a href="${link}" target="_blank">${entry.title.$t}</a>`;
+              ul.appendChild(li);
+            });
+          })
+          .catch(() => {
+            document.getElementById('blog-feed').innerHTML = '<li>記事を取得できませんでした。</li>';
+          });
+      </script>
+      <p>
+        <a href="https://twitter.com/mnct_sken" target="_blank" rel="noopener" class="button-link">
+          X（旧Twitter）公式アカウントはこちら
+        </a>
+      </p>
     </section>
 
     <!-- お問い合わせ -->
