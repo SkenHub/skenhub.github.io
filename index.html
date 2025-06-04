@@ -80,14 +80,13 @@
       <h3>創造技術研究会ブログ 最新記事</h3>
       <ul id="blog-feed"></ul>
       <script>
-        fetch('https://s-kenblog.blogspot.com/feeds/posts/default?alt=json')
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://s-kenblog.blogspot.com/feeds/posts/default')
           .then(res => res.json())
           .then(data => {
             const ul = document.getElementById('blog-feed');
-            data.feed.entry.slice(0,5).forEach(entry => {
+            data.items.slice(0,5).forEach(entry => {
               const li = document.createElement('li');
-              const link = entry.link.find(l => l.rel === 'alternate').href;
-              li.innerHTML = `<a href="${link}" target="_blank">${entry.title.$t}</a>`;
+              li.innerHTML = `<a href="${entry.link}" target="_blank">${entry.title}</a>`;
               ul.appendChild(li);
             });
           })
@@ -97,7 +96,14 @@
       </script>
       <p>
         <a href="https://twitter.com/mnct_sken" target="_blank" rel="noopener" class="button-link">
-          X（旧Twitter）公式アカウントはこちら
+          X（旧Twitter）公式アカウントはこちら<br>
+          https://twitter.com/mnct_sken
+        </a>
+      </p>
+      <p>
+        <a href="https://s-kenblog.blogspot.com/" target="_blank" rel="noopener" class="button-link">
+          創造技術研究会ブログはこちら<br>
+          https://s-kenblog.blogspot.com/
         </a>
       </p>
     </section>
