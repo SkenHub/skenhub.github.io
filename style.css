@@ -167,6 +167,21 @@ footer {
     border-radius: 0 0 10px 10px;
 }
 
+/* ニュース・お知らせのリストを中央寄せに */
+#news ul {
+  padding-left: 1.2em;
+  margin-left: 0;
+  list-style-position: inside;
+  text-align: left;
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
+}
+#news ul li {
+  text-indent: 0;
+  margin-left: 0;
+}
+
 /* PC表示時もスマホ幅で中央寄せ */
 @media (min-width: 600px) {
     body {
