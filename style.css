@@ -186,3 +186,40 @@ footer {
         max-width: 100vw;
     }
 }
+
+/* --- 追加 --- */
+
+/* テキストサイズ */
+.font-small { font-size: 14px !important; }
+.font-medium { font-size: 17px !important; }
+.font-large { font-size: 21px !important; }
+
+/* 幅 */
+.width-normal section, .width-normal .slideshow { max-width: 480px !important; }
+.width-wide section, .width-wide .slideshow { max-width: 700px !important; }
+
+/* テーマ */
+.theme-light {
+  background: #e0f7fa !important;
+  color: #222 !important;
+}
+.theme-dark {
+  background: #222 !important;
+  color: #e0f7fa !important;
+}
+.theme-dark section, .theme-dark .sns-block, .theme-dark .team-card {
+  background: #222 !important;
+  color: #e0f7fa !important;
+  border-color: #444 !important;
+}
+.theme-dark header, .theme-dark footer {
+  background: #111 !important;
+  color: #e0f7fa !important;
+}
+.theme-dark a { color: #90e0ef !important; }
+.theme-dark .button-link { background: #0096c7 !important; color: #fff !important; }
+.theme-dark .button-link:hover { background: #0077b6 !important; }
+
+.theme-auto { /* 自動はJSで切り替え */ }
+
+/* --- 追加ここまで --- */

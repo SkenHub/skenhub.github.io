@@ -9,6 +9,23 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <!-- ユーザー設定バー -->
+    <div id="user-settings" style="position:sticky;top:0;z-index:1000;background:#e0f7fa;padding:8px 0 4px 0;text-align:center;">
+      <span>表示</span>
+      <button id="toggle-content" style="margin:0 8px;">非表示</button>
+      <span style="margin-left:16px;">テキスト</span>
+      <button class="font-btn" data-size="small">小</button>
+      <button class="font-btn" data-size="medium">標準</button>
+      <button class="font-btn" data-size="large">大</button>
+      <span style="margin-left:16px;">幅</span>
+      <button class="width-btn" data-width="normal">標準</button>
+      <button class="width-btn" data-width="wide">広め</button>
+      <span style="margin-left:16px;">色 (ベータ)</span>
+      <button class="theme-btn" data-theme="auto">自動</button>
+      <button class="theme-btn" data-theme="light">ライト</button>
+      <button class="theme-btn" data-theme="dark">ダーク</button>
+    </div>
+
     <!-- ヘッダー -->
     <header>
       <div class="logo">S-ken</div>
@@ -121,5 +138,183 @@
     <footer>
       <p>&copy; 2025 舞鶴高専 創造技術研究会 (S-ken) All rights reserved.</p>
     </footer>
+
+    <div id="main-content">
+      <!-- ここに既存の全コンテンツ（header, slideshow, sectionなど）を入れる -->
+      <!-- ユーザー設定バー -->
+      <div id="user-settings" style="position:sticky;top:0;z-index:1000;background:#e0f7fa;padding:8px 0 4px 0;text-align:center;">
+        <span>表示</span>
+        <button id="toggle-content" style="margin:0 8px;">非表示</button>
+        <span style="margin-left:16px;">テキスト</span>
+        <button class="font-btn" data-size="small">小</button>
+        <button class="font-btn" data-size="medium">標準</button>
+        <button class="font-btn" data-size="large">大</button>
+        <span style="margin-left:16px;">幅</span>
+        <button class="width-btn" data-width="normal">標準</button>
+        <button class="width-btn" data-width="wide">広め</button>
+        <span style="margin-left:16px;">色 (ベータ)</span>
+        <button class="theme-btn" data-theme="auto">自動</button>
+        <button class="theme-btn" data-theme="light">ライト</button>
+        <button class="theme-btn" data-theme="dark">ダーク</button>
+      </div>
+
+      <!-- ヘッダー -->
+      <header>
+        <div class="logo">S-ken</div>
+        <nav>
+          <ul>
+            <li><a href="#about">私たちについて</a></li>
+            <li><a href="#organization">班紹介</a></li>
+            <li><a href="#news">ニュース・お知らせ</a></li>
+            <li><a href="#sns">SNSタイムライン</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- メインビジュアル -->
+      <div class="slideshow">
+        <div class="slides">
+          <img src="photos/1.jpg" alt="写真1">
+          <img src="photos/2.jpg" alt="写真2">
+          <img src="photos/3.jpg" alt="写真3">
+          <img src="photos/4.jpg" alt="写真4">
+          <img src="photos/5.jpg" alt="写真5">
+        </div>
+      </div>
+
+      <!-- 活動紹介 -->
+      <section id="about">
+        <h2>私たちについて</h2>
+        <p>
+          舞鶴高専 創造技術研究会（S-ken）は、<strong>高専ロボコン全国大会 優勝</strong>を目指して活動しているロボット開発チームです。<br>
+          設計・製作・制御をすべて自分たちの手で行い、<strong>創造力と技術力</strong>を高めながら、最高のロボットを作り上げています。
+        </p>
+      </section>
+
+      <!-- 班紹介 -->
+      <section id="organization">
+        <h2>班紹介</h2>
+        <div class="teams">
+          <div class="team-card">
+            <h3>電気班</h3>
+            <p>ロボットの回路設計やプログラム開発を担当します。</p>
+            <a href="electric.html" class="button-link">詳しく見る</a>
+          </div>
+          <div class="team-card">
+            <h3>機械班</h3>
+            <p>ロボットの機構設計や製作を担当します。</p>
+            <a href="mechanical.html" class="button-link">詳しく見る</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ニュース・お知らせ -->
+      <section id="news">
+        <h2>ニュース・お知らせ</h2>
+        <ul>
+          <li>2025年5月 新入生歓迎会</li>
+          <li>2025年4月 新年度活動開始</li>
+          <li>2025年3月 関西春ロボコン出場！</li>
+        </ul>
+      </section>
+
+      <!-- SNS・ブログ -->
+      <section id="sns">
+        <h2>SNS・ブログ</h2>
+        <div class="sns-columns">
+          <div class="sns-block">
+            <h3>創造技術研究会ブログ 最新記事</h3>
+            <ul id="blog-feed"></ul>
+            <script>
+              fetch('https://api.rss2json.com/v1/api.json?rss_url=https://s-kenblog.blogspot.com/feeds/posts/default')
+                .then(res => res.json())
+                .then(data => {
+                  const ul = document.getElementById('blog-feed');
+                  data.items.slice(0,5).forEach(entry => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="${entry.link}" target="_blank">${entry.title}</a>`;
+                    ul.appendChild(li);
+                  });
+                })
+                .catch(() => {
+                  document.getElementById('blog-feed').innerHTML = '<li>記事を取得できませんでした。</li>';
+                });
+            </script>
+            <p>
+              最新の活動情報はブログをご覧ください：<br>
+              <a href="https://s-kenblog.blogspot.com/" target="_blank" class="button-link">
+                創造技術研究会ブログはこちら
+              </a>
+            </p>
+          </div>
+          <div class="sns-block">
+            <h3>X（旧Twitter）</h3>
+            <p>
+              <a href="https://twitter.com/mnct_sken" target="_blank" rel="noopener" class="button-link">
+                X（旧Twitter）公式アカウントはこちら
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- お問い合わせ -->
+      <section id="contact">
+        <h2>お問い合わせ</h2>
+        <p>活動内容や入部希望など、お気軽にご連絡ください！</p>
+        <p>メールアドレス：<a href="mailto:skenmail2013@gmail.com">skenmail2013@gmail.com</a></p>
+      </section>
+    </div>
+
+    <script>
+      // 表示/非表示
+      const toggleBtn = document.getElementById('toggle-content');
+      const mainContent = document.getElementById('main-content');
+      let visible = true;
+      toggleBtn.onclick = () => {
+        visible = !visible;
+        mainContent.style.display = visible ? '' : 'none';
+        toggleBtn.textContent = visible ? '非表示' : '表示';
+      };
+
+      // テキストサイズ
+      document.querySelectorAll('.font-btn').forEach(btn => {
+        btn.onclick = () => {
+          document.body.classList.remove('font-small', 'font-medium', 'font-large');
+          if (btn.dataset.size === 'small') document.body.classList.add('font-small');
+          if (btn.dataset.size === 'medium') document.body.classList.add('font-medium');
+          if (btn.dataset.size === 'large') document.body.classList.add('font-large');
+        };
+      });
+
+      // 幅
+      document.querySelectorAll('.width-btn').forEach(btn => {
+        btn.onclick = () => {
+          document.body.classList.remove('width-normal', 'width-wide');
+          if (btn.dataset.width === 'normal') document.body.classList.add('width-normal');
+          if (btn.dataset.width === 'wide') document.body.classList.add('width-wide');
+        };
+      });
+
+      // テーマ
+      function applyTheme(theme) {
+        document.body.classList.remove('theme-auto', 'theme-light', 'theme-dark');
+        document.body.classList.add('theme-' + theme);
+        if (theme === 'auto') {
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('theme-dark');
+          } else {
+            document.body.classList.add('theme-light');
+          }
+        }
+      }
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.onclick = () => applyTheme(btn.dataset.theme);
+      });
+      // 初期
+      document.body.classList.add('font-medium', 'width-normal', 'theme-auto');
+      applyTheme('auto');
+    </script>
   </body>
 </html>
