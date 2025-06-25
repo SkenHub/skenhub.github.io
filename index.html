@@ -140,14 +140,10 @@
       let visible = true;
       toggleBtn.onclick = () => {
         visible = !visible;
-        // ユーザー設定バー以外のbody直下要素を全て非表示
-        Array.from(document.body.children).forEach(el => {
-          if (el !== userSettingsBar) {
-            el.style.display = visible ? '' : 'none';
-          }
-        });
-        // バー自体も非表示
+        // 設定バーだけを非表示/表示
         userSettingsBar.style.display = visible ? '' : 'none';
+        // ボタンのテキストも切り替え
+        toggleBtn.textContent = visible ? '非表示' : '表示';
       };
 
       // テキストサイズ
