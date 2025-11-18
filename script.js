@@ -1,38 +1,68 @@
-let currentIndex = 0;
-const slides = document.querySelector('.slides');
-const images = slides ? Array.from(slides.children).filter(img => img.tagName === 'IMG' && img.src) : [];
-const totalSlides = images.length;
+const { createApp } = Vue;
 
-// 画像が1枚以上ある場合のみスライド
-if (slides && totalSlides > 0) {
-    // 不要なimg（srcが空など）を非表示
-    Array.from(slides.children).forEach(img => {
-        if (img.tagName === 'IMG' && !img.src) img.style.display = 'none';
-    });
-
-    // 横並び
-    slides.style.display = 'flex';
-    images.forEach(img => {
-        img.style.flex = '0 0 auto';
-        img.style.maxWidth = '100%';
-    });
-
-    // 各画像の幅を取得
-    function getOffset(index) {
-        let offset = 0;
-        for (let i = 0; i < index; i++) {
-            offset += images[i].clientWidth;
-        }
-        return offset;
+createApp({
+  data() {
+    return {
+      currentPage: 'home',
+    };
+  },
+  methods: {
+    scrollTo(selector) {
+      if (this.currentPage === 'home') {
+        this.$nextTick(() => {
+          const element = document.querySelector(selector);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
+    },
+    fetchBlogFeed() {
+      fetch('https://api.rss2json.com/v1/api.json?rss_url=https://s-kenblog.blogspot.com/feeds/posts/default')
+        .then(res => res.json())
+        .then(data => {
+          const ul = document.getElementById('blog-feed');
+          if (ul) {
+            ul.innerHTML = ''; // Clear loading message
+            if (data.items) {
+              data.items.slice(0, 5).forEach(entry => {
+                const li = document.createElement('li');
+                li.innerHTML = `<a href="${entry.link}" target="_blank">${entry.title}</a>`;
+                ul.appendChild(li);
+              });
+            } else {
+               ul.innerHTML = '<li>記事を取得できませんでした。</li>';
+            }
+          }
+        })
+        .catch(() => {
+          const ul = document.getElementById('blog-feed');
+          if (ul) {
+            ul.innerHTML = '<li>記事の取得に失敗しました。</li>';
+          }
+        });
     }
-
-    // スライドの幅を設定
-    const slideWidth = images.reduce((total, img) => total + img.clientWidth, 0);
-    slides.style.width = `${slideWidth}px`;
-
-    setInterval(() => {
-        if (totalSlides <= 1) return;
-        currentIndex = (currentIndex + 1) % totalSlides;
-        slides.style.transform = `translateX(-${getOffset(currentIndex)}px)`;
-    }, 4000);
-}
+  },
+  mounted() {
+    // 初期ページをクエリパラメータ ?p= で指定できるように
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const p = params.get('p');
+      if (p && ['home','teams','mechanical','electric'].includes(p)) {
+        this.currentPage = p;
+      }
+    } catch {}
+    if (this.currentPage === 'home') {
+      this.fetchBlogFeed();
+    }
+  },
+  watch: {
+      currentPage(newPage) {
+          if (newPage === 'home') {
+              this.$nextTick(() => {
+                  this.fetchBlogFeed();
+              });
+          }
+      }
+  }
+}).mount('#app');
