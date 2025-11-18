@@ -48,7 +48,7 @@ createApp({
     try {
       const params = new URLSearchParams(window.location.search);
       const p = params.get('p');
-      if (p && ['home','teams','mechanical','electric'].includes(p)) {
+      if (p && ['home','teams'].includes(p)) {
         this.currentPage = p;
       }
     } catch {}

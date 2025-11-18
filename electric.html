@@ -1,24 +1,104 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>電気班 - 舞鶴高専 創造技術研究会 (S-ken)</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="photos/sken.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1>電気班</h1>
-      <nav>
-        <a href="index.html">トップページに戻る</a>
-      </nav>
-    </header>
-    <section>
-      <h2>電気班の役割</h2>
-      <p>電気班はロボットの回路設計やプログラム開発を担当します。センサ制御、モータードライバ、マイコンなどを扱い、ロボットの頭脳を作り上げます。</p>
-    </section>
-    <footer>
-      <p>&copy; 2025 舞鶴高専 創造技術研究会 (S-ken) All rights reserved.</p>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="photos/sken.jpg" alt="S-ken ロゴ" class="logo-img me-2" onerror="this.onerror=null;this.src='photos/sken.ico'" />
+          <span>S-ken</span>
+        </a>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">トップ</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html?p=teams">班紹介</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container py-5">
+      <h1 class="mb-4">電気班</h1>
+      <p>電気班はロボットの<strong>回路・通信・ソフトウェア</strong>を担当します。安全で再現性の高い動作を実現するため、ハードとファームを一体で設計します。</p>
+      <div class="row g-4 mb-4">
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="h5">扱う技術</h2>
+              <ul class="small mb-0">
+                <li>マイコン (STM32) / ROS 2</li>
+                <li>モータードライバ / モジュール回路</li>
+                <li>CAN / SPI / UART / 無線通信</li>
+                etc.
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="h5">ソフト & ツール</h2>
+              <ul class="small mb-0">
+                <li>System Workbench for STM32</li>
+                <li>ROS 2</li>
+                <li>KiCad</li>
+                <li>GitHub</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <section class="mb-4">
+        <h2 class="h5">活動写真</h2>
+        <p class="small text-muted">電気班の様子です。</p>
+        <div class="row g-3">
+          <div class="col-sm-6 col-lg-4">
+            <a href="photos/electric/20241006_215638.jpg" target="_blank" rel="noopener">
+              <img class="gallery-img rounded" src="photos/electric/20241006_215638.jpg" alt="コントローラーとROS2" onerror="this.onerror=null;this.src='https://picsum.photos/600/400?random=11';" />
+            </a>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <a href="photos/electric/20250308_164013.jpg" target="_blank" rel="noopener">
+              <img class="gallery-img rounded" src="photos/electric/20250308_164013.jpg" alt="オシロでの計測" onerror="this.onerror=null;this.src='https://picsum.photos/600/400?random=12';" />
+            </a>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <a href="photos/electric/20250607_131214.jpg" target="_blank" rel="noopener">
+              <img class="gallery-img rounded" src="photos/electric/20250607_131214.jpg" alt="回路モジュール" onerror="this.onerror=null;this.src='https://picsum.photos/600/400?random=13';" />
+            </a>
+          </div>
+
+          <div class="col-sm-6 col-lg-4">
+            <a href="photos/electric/20250910_190315.jpg" target="_blank" rel="noopener">
+              <img class="gallery-img rounded" src="photos/electric/20250910_190315.jpg" alt="配線" onerror="this.onerror=null;this.src='https://picsum.photos/600/400?random=14';" />
+            </a>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <a href="photos/electric/20241121_171047.jpg" target="_blank" rel="noopener">
+              <img class="gallery-img rounded" src="photos/electric/20241121_171047.jpg" alt="はんだ付け" onerror="this.onerror=null;this.src='https://picsum.photos/600/400?random=15';" />
+            </a>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <a href="photos/electric/20230820_203204.jpg" target="_blank" rel="noopener">
+              <img class="gallery-img rounded" src="photos/electric/20230820_203204.jpg" alt="実験風景" onerror="this.onerror=null;this.src='https://picsum.photos/600/400?random=16';" />
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      <a href="index.html" class="btn btn-secondary">トップページに戻る</a>
+    </main>
+
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+      <p class="mb-1">&copy; 2025 舞鶴高専 創造技術研究会 (S-ken) All rights reserved.</p>
+      <p class="mb-0 small">運営者情報： <a href="https://x.com/Flying___eagle" target="_blank" rel="noopener" class="link-light text-decoration-underline">@Flying___eagle</a></p>
     </footer>
   </body>
 </html>

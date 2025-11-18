@@ -91,7 +91,7 @@
                   <div class="card-body text-center">
                     <h3 class="card-title">機械班</h3>
                     <p class="card-text">ロボットの機構設計や製作を担当します。</p>
-                    <a href="#" @click.prevent="currentPage = 'mechanical'" class="btn btn-primary">詳しく見る</a>
+                    <a href="mechanical.html" class="btn btn-primary">詳しく見る</a>
                   </div>
                 </div>
               </div>
@@ -100,7 +100,7 @@
                   <div class="card-body text-center">
                     <h3 class="card-title">電気班</h3>
                     <p class="card-text">ロボットの回路設計やプログラム開発を担当します。</p>
-                    <a href="#" @click.prevent="currentPage = 'electric'" class="btn btn-primary">詳しく見る</a>
+                    <a href="electric.html" class="btn btn-primary">詳しく見る</a>
                   </div>
                 </div>
               </div>
@@ -174,15 +174,15 @@
         <div v-if="currentPage === 'teams'">
           <section>
             <h2>班紹介</h2>
-            <p>創造技術研究会は <strong>機械班</strong> と <strong>電気班</strong> の2班が密に連携してロボットを完成させます。要件定義フェーズでは両班合同で競技分析とアイデア出しを行い、開発中はインターフェース（取り付け寸法・電源仕様・通信プロトコル）を週次レビューで同期します。</p>
-            <p class="small">班をまたいだ兼任も可能で、CAD設計しながらファームを書いたり、回路を作りながら加工を手伝うメンバーもいます。</p>
+            <p>創造技術研究会は <strong>機械班</strong> と <strong>電気班</strong> の2班が密に連携してロボットを完成させます。要件定義フェーズでは両班合同で競技分析とアイデア出しを行います。</p>
+            <p class="small">班をまたいだ兼任も可能で、CAD設計しながらファームを書いたり、回路を作りながら加工するメンバーもいます。</p>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <div class="card h-100">
                   <div class="card-body text-center">
                     <h3 class="card-title">機械班</h3>
                     <p class="card-text">機構設計・加工・組立を担当します。</p>
-                    <a href="#" @click.prevent="currentPage = 'mechanical'" class="btn btn-primary">機械班を見る</a>
+                    <a href="mechanical.html" class="btn btn-primary">機械班を見る</a>
                   </div>
                 </div>
               </div>
@@ -191,7 +191,7 @@
                   <div class="card-body text-center">
                     <h3 class="card-title">電気班</h3>
                     <p class="card-text">回路・制御・プログラムを担当します。</p>
-                    <a href="#" @click.prevent="currentPage = 'electric'" class="btn btn-primary">電気班を見る</a>
+                    <a href="electric.html" class="btn btn-primary">電気班を見る</a>
                   </div>
                 </div>
               </div>
@@ -200,34 +200,7 @@
           </section>
         </div>
 
-        <!-- Mechanical Page -->
-        <div v-if="currentPage === 'mechanical'">
-          <section>
-            <h2>機械班</h2>
-            <p>機械班はロボットの<strong>構造・駆動・エンドエフェクタ</strong>を設計・製作するチームです。要件から荷重/強度計算を行い、軽量性・剛性・整備性のバランスを最適化します。</p>
-            <ul class="small">
-              <li><strong>使用ツール:</strong> 3D CAD (Fusion 360), 2D CAD, 3Dプリンタ, レーザー加工機, 旋盤, フライス盤</li>
-              <li><strong>主なタスク:</strong> アイデア試作 / 駆動方式検討 / 設計レビュー / 部品加工 / 組立 / メンテ / 改良</li>
-              <li><strong>今年の焦点:</strong> モジュール化と軽量化（部品点数 15% 削減目標）</li>
-            </ul>
-            <button @click="currentPage = 'home'" class="btn btn-secondary mt-3">トップページに戻る</button>
-          </section>
-        </div>
-
-        <!-- Electric Page -->
-        <div v-if="currentPage === 'electric'">
-          <section>
-            <h2>電気班</h2>
-            <p>電気班はロボットの<strong>電源・駆動制御・センシング・通信・ソフトウェア</strong>を担当します。安全で再現性の高い動作を実現するため、ハードとファームを一体で設計します。</p>
-            <ul class="small">
-              <li><strong>扱う技術:</strong> マイコン(Cortex-M), モータードライバ, 電源レギュレーション, I2C/SPI/UART, 無線通信</li>
-              <li><strong>ソフト:</strong> 組込みC/C++ / PlatformIO / Pythonログ解析 / GitHub Actionsでビルド確認</li>
-              <li><strong>開発フロー:</strong> 要件→回路試作→基板設計→ファーム実装→動作ログ解析→最適化</li>
-              <li><strong>今年の焦点:</strong> センサ融合 + フィードフォワード制御 / 回路モジュール共通化</li>
-            </ul>
-            <button @click="currentPage = 'home'" class="btn btn-secondary mt-3">トップページに戻る</button>
-          </section>
-        </div>
+        <!-- Removed inline mechanical/electric pages (now standalone HTML files) -->
       </main>
 
       <!-- Footer -->
