@@ -25,3 +25,15 @@ footer {
   color: white;
   padding: 20px 0;
 }
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* 白背景で視認性向上 (黒ロゴ前提) */
+}
+
+.footer-logo {
+  height: 50px;
+  filter: none; /* フッターはそのまま */
+}
