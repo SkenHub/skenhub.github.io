@@ -73,9 +73,13 @@
           <section id="about" class="mb-5">
             <h2>私たちについて</h2>
             <p>
-              舞鶴高専 創造技術研究会（S-ken）は、<strong>高専ロボコン全国大会 優勝</strong>を目指して活動しているロボット開発チームです。<br />
-              設計・製作・制御をすべて自分たちの手で行い、<strong>創造力と技術力</strong>を高めながら、最高のロボットを作り上げています。
+              舞鶴高専 創造技術研究会（S-ken）は、<strong>高専ロボコン全国大会 優勝</strong>と「ものづくりで仲間を笑顔にすること」を目標に活動する学生ロボット開発チームです。<br />
+              設計・加工・回路・制御・ソフトウェアまで一気通貫で自分たちの手で行い、<strong>創造力 / 技術力 / チーム力</strong>を高めながら競技に挑戦しています。
             </p>
+            <p>
+              平日放課後と休日に部室・実習工場で活動しています。失敗を歓迎し、試作を高速に繰り返す「Try Fast」文化が根付いています。
+            </p>
+
           </section>
 
           <section id="organization" class="mb-5">
@@ -111,6 +115,31 @@
             </ul>
           </section>
 
+          <section id="achievements" class="mb-5">
+            <h2>これまでの実績</h2>
+            <p>過去数年の取り組みと実績</p>
+            <div class="row">
+              <div class="col-12 mb-3">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h3 class="h5">実績</h3>
+                    <ul class="small mb-0">
+                      <li>高専ロボコン2025 近畿地区大会 鶴覚郭閣郭角確獲(かぐや) 予選1勝1敗</li> 
+                      <li>高専ロボコン2025 近畿地区大会 鶴技の舞 予選2勝0敗、準決勝で敗退 特別賞（セメダイン株式会社）</li>
+                      <li>関西春ロボコン2025 両チームともに予選リーグを突破しベスト20　1チームがベストロボット賞</li> 
+                      <li>高専ロボコン2024 近畿地区大会（舞鶴開催） アポロ計鶴 特別賞 （田中貴金属グループ）</li> 
+                      <li>高専ロボコン2024 近畿地区大会（舞鶴開催） 系群五鶴 特別賞 （株式会社デンソー） </li>                      
+                      <li>関西春ロボコン2024 全22チーム中の準優勝とベスト16</li> 
+                      <li>高専ロボコン2023 近畿地区大会 鋼鶴天翔 奨励賞</li> 
+                      <li>高専ロボコン2023 近畿地区大会 鶴壱 特別賞（マブチモーター株式会社） </li>
+                      <li>関西春ロボコン2023 全13チーム中の準優勝とベスト８</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section id="sns" class="mb-5">
             <h2>SNS・ブログ</h2>
             <div class="row">
@@ -140,7 +169,8 @@
         <div v-if="currentPage === 'teams'">
           <section>
             <h2>班紹介</h2>
-            <p>創造技術研究会は機械班・電気班の2つでロボットを作ります。</p>
+            <p>創造技術研究会は <strong>機械班</strong> と <strong>電気班</strong> の2班が密に連携してロボットを完成させます。要件定義フェーズでは両班合同で競技分析とアイデア出しを行い、開発中はインターフェース（取り付け寸法・電源仕様・通信プロトコル）を週次レビューで同期します。</p>
+            <p class="small">班をまたいだ兼任も可能で、CAD設計しながらファームを書いたり、回路を作りながら加工を手伝うメンバーもいます。</p>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <div class="card h-100">
@@ -169,7 +199,12 @@
         <div v-if="currentPage === 'mechanical'">
           <section>
             <h2>機械班</h2>
-            <p>機械班はロボットの機構設計や製作を担当します。CAD設計から3Dプリンタや加工機を使った製作まで行い、ロボットの体を作り上げます。</p>
+            <p>機械班はロボットの<strong>構造・駆動・エンドエフェクタ</strong>を設計・製作するチームです。要件から荷重/強度計算を行い、軽量性・剛性・整備性のバランスを最適化します。</p>
+            <ul class="small">
+              <li><strong>使用ツール:</strong> 3D CAD (Fusion 360), 2D CAD, 3Dプリンタ, レーザー加工機, 旋盤, フライス盤</li>
+              <li><strong>主なタスク:</strong> アイデア試作 / 駆動方式検討 / 設計レビュー / 部品加工 / 組立 / メンテ / 改良</li>
+              <li><strong>今年の焦点:</strong> モジュール化と軽量化（部品点数 15% 削減目標）</li>
+            </ul>
             <button @click="currentPage = 'home'" class="btn btn-secondary mt-3">トップページに戻る</button>
           </section>
         </div>
@@ -178,7 +213,13 @@
         <div v-if="currentPage === 'electric'">
           <section>
             <h2>電気班</h2>
-            <p>電気班はロボットの回路設計やプログラム開発を担当します。センサ制御、モータードライバ、マイコンなどを扱い、ロボットの頭脳を作り上げます。</p>
+            <p>電気班はロボットの<strong>電源・駆動制御・センシング・通信・ソフトウェア</strong>を担当します。安全で再現性の高い動作を実現するため、ハードとファームを一体で設計します。</p>
+            <ul class="small">
+              <li><strong>扱う技術:</strong> マイコン(Cortex-M), モータードライバ, 電源レギュレーション, I2C/SPI/UART, 無線通信</li>
+              <li><strong>ソフト:</strong> 組込みC/C++ / PlatformIO / Pythonログ解析 / GitHub Actionsでビルド確認</li>
+              <li><strong>開発フロー:</strong> 要件→回路試作→基板設計→ファーム実装→動作ログ解析→最適化</li>
+              <li><strong>今年の焦点:</strong> センサ融合 + フィードフォワード制御 / 回路モジュール共通化</li>
+            </ul>
             <button @click="currentPage = 'home'" class="btn btn-secondary mt-3">トップページに戻る</button>
           </section>
         </div>
