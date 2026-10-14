@@ -1,233 +1,226 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>舞鶴高専 創造技術研究会 (S-ken)</title>
-    <link rel="icon" type="image/x-icon" href="photos/sken.ico" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="app">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-          <a class="navbar-brand d-flex align-items-center" href="#" @click.prevent="currentPage = 'home'">
-            <img src="photos/sken.jpg" alt="S-ken ロゴ" class="logo-img me-2" loading="lazy" onerror="this.onerror=null;this.src='photos/sken.ico'" />
-            <span>S-ken</span>
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#" @click.prevent="currentPage = 'home'">トップ</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" @click.prevent="currentPage = 'teams'">班紹介</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">お問い合わせ</a>
-              </li>
-            </ul>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>舞鶴高専 創造技術研究会 (S-ken)</title>
+  <link rel="icon" type="image/x-icon" href="photos/sken.ico" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="app">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#" @click.prevent="currentPage = 'home'">
+          <img src="photos/sken.jpg" alt="S-ken ロゴ" class="logo-img me-2" loading="lazy"
+            onerror="this.onerror=null;this.src='photos/sken.ico'" />
+          <span>S-ken</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#" @click.prevent="currentPage = 'home'">トップ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" @click.prevent="currentPage = 'teams'">班紹介</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">お問い合わせ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mt-5 pt-4">
+      <!-- Home Page -->
+      <div v-if="currentPage === 'home'">
+        <div id="carouselExample" class="carousel slide mb-4" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="photos/1.jpg" class="d-block w-100" alt="活動の様子1"
+                onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=1';">
+            </div>
+            <div class="carousel-item">
+              <img src="photos/2.jpg" class="d-block w-100" alt="活動の様子2"
+                onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=2';">
+            </div>
+            <div class="carousel-item">
+              <img src="photos/3.jpg" class="d-block w-100" alt="活動の様子3"
+                onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=3';">
+            </div>
+            <div class="carousel-item">
+              <img src="photos/4.jpg" class="d-block w-100" alt="活動の様子4"
+                onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=4';">
+            </div>
+            <div class="carousel-item">
+              <img src="photos/5.jpg" class="d-block w-100" alt="活動の様子5"
+                onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=5';">
+            </div>
           </div>
         </div>
-      </nav>
 
-      <!-- Main Content -->
-      <main class="container mt-5 pt-4">
-        <!-- Home Page -->
-        <div v-if="currentPage === 'home'">
-          <div id="carouselExample" class="carousel slide mb-4" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="photos/1.jpg" class="d-block w-100" alt="活動の様子1" onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=1';">
-              </div>
-              <div class="carousel-item">
-                <img src="photos/2.jpg" class="d-block w-100" alt="活動の様子2" onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=2';">
-              </div>
-              <div class="carousel-item">
-                <img src="photos/3.jpg" class="d-block w-100" alt="活動の様子3" onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=3';">
-              </div>
-              <div class="carousel-item">
-                <img src="photos/4.jpg" class="d-block w-100" alt="活動の様子4" onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=4';">
-              </div>
-              <div class="carousel-item">
-                <img src="photos/5.jpg" class="d-block w-100" alt="活動の様子5" onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=5';">
-              </div>
-            </div>
-          </div>
-
-          <section id="about" class="mb-5">
-            <h2>私たちについて</h2>
-            <p>
-              舞鶴高専 創造技術研究会（S-ken）は、<strong>高専ロボコン全国大会 優勝</strong>と「ものづくりで仲間を笑顔にすること」を目標に活動する学生ロボット開発チームです。<br />
-              設計・加工・回路・制御・ソフトウェアまで一気通貫で自分たちの手で行い、<strong>創造力 / 技術力 / チーム力</strong>を高めながら競技に挑戦しています。
-            </p>
-            <p>
-              平日放課後と休日に部室・実習工場で活動しています。失敗を歓迎し、試作を高速に繰り返す「Try Fast」文化が根付いています。
-            </p>
-
-          </section>
-
-          <section id="organization" class="mb-5">
-            <h2>班紹介</h2>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                  <div class="card-body text-center">
-                    <h3 class="card-title">機械班</h3>
-                    <p class="card-text">ロボットの機構設計や製作を担当します。</p>
-                    <a href="mechanical.html" class="btn btn-primary">詳しく見る</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                  <div class="card-body text-center">
-                    <h3 class="card-title">電気班</h3>
-                    <p class="card-text">ロボットの回路設計やプログラム開発を担当します。</p>
-                    <a href="electric.html" class="btn btn-primary">詳しく見る</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section id="news" class="mb-5">
-            <h2>ニュース・お知らせ</h2>
-            <ul class="list-group">
-              <li class="list-group-item">2026年3月 関西春ロボコン出場！</li>
-              <li class="list-group-item">2026年2月 追いコン</li>
-              <li class="list-group-item">2025年10月 一年生ロボットアーム大会</li>
-              <li class="list-group-item">2025年9月 高専ロボコン2025近畿地区大会</li>
-              <li class="list-group-item">2025年8月 夏合宿</li>
-              <li class="list-group-item">2025年6月 Robohan様との交流会</li>
-              <li class="list-group-item">2025年5月 新入生歓迎会</li>
-              <li class="list-group-item">2025年4月 新年度活動開始</li>
-              <li class="list-group-item">2025年3月 関西春ロボコン出場！</li>
-            </ul>
-          </section>
-
-          <section id="achievements" class="mb-5">
-            <h2>これまでの実績</h2>
-            <p>過去数年の取り組みと実績</p>
-            <div class="row">
-              <div class="col-12 mb-3">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h3 class="h5">実績</h3>
-                    <ul class="small mb-0">
-                      <li>関西春ロボコン2026 両チームともに予選リーグを突破しベスト16　1チームがベストマッチ賞</li>  
-                      <li>高専ロボコン2025 近畿地区大会 鶴覚郭閣郭角確獲(かぐや) 予選1勝1敗</li> 
-                      <li>高専ロボコン2025 近畿地区大会 鶴技の舞 予選2勝0敗、準決勝で敗退 特別賞（セメダイン株式会社）</li>
-                      <li>関西春ロボコン2025 両チームともに予選リーグを突破しベスト20　1チームがベストロボット賞</li> 
-                      <li>高専ロボコン2024 近畿地区大会（舞鶴開催） アポロ計鶴 特別賞 （田中貴金属グループ）</li> 
-                      <li>高専ロボコン2024 近畿地区大会（舞鶴開催） 系群五鶴 特別賞 （株式会社デンソー） </li>                      
-                      <li>関西春ロボコン2024 全22チーム中の準優勝とベスト16</li> 
-                      <li>高専ロボコン2023 近畿地区大会 鋼鶴天翔 奨励賞</li> 
-                      <li>高専ロボコン2023 近畿地区大会 鶴壱 特別賞（マブチモーター株式会社） </li>
-                      <li>関西春ロボコン2023 全13チーム中の準優勝とベスト8</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section id="sns" class="mb-5">
-            <h2>SNS・ブログ</h2>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">創造技術研究会ブログ</h3>
-                            <ul id="blog-feed" class="list-unstyled"><li>読み込み中...</li></ul>
-                            <a href="https://s-kenblog.blogspot.com/" target="_blank" class="btn btn-outline-primary mt-2">ブログへ</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">X (旧Twitter)</h3>
-                            <p>日々の活動や最新情報を発信中です。</p>
-                            <a href="https://twitter.com/mnct_sken" target="_blank" rel="noopener" class="btn btn-outline-info">Xでフォロー</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">GitHub</h3>
-                            <p>開発中のソフトウェアやプロジェクトを公開しています。</p>
-                            <a href="https://github.com/SkenHub" target="_blank" rel="noopener" class="btn btn-outline-dark">GitHubを見る</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </section>
-        </div>
-
-        <!-- Teams Page -->
-        <div v-if="currentPage === 'teams'">
-          <section>
-            <h2>班紹介</h2>
-            <p>創造技術研究会は <strong>機械班</strong> と <strong>電気班</strong> の2班が密に連携してロボットを完成させます。要件定義フェーズでは両班合同で競技分析とアイデア出しを行います。</p>
-            <p class="small">班をまたいだ兼任も可能で、CAD設計しながらファームを書いたり、回路を作りながら加工するメンバーもいます。</p>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                  <div class="card-body text-center">
-                    <h3 class="card-title">機械班</h3>
-                    <p class="card-text">機構設計・加工・組立を担当します。</p>
-                    <a href="mechanical.html" class="btn btn-primary">機械班を見る</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                  <div class="card-body text-center">
-                    <h3 class="card-title">電気班</h3>
-                    <p class="card-text">回路・制御・プログラムを担当します。</p>
-                    <a href="electric.html" class="btn btn-primary">電気班を見る</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button @click="currentPage = 'home'" class="btn btn-secondary mt-3">トップページに戻る</button>
-          </section>
-        </div>
-
-        <!-- Removed inline mechanical/electric pages (now standalone HTML files) -->
-      </main>
-
-      <!-- Footer -->
-      <footer class="bg-dark text-white text-center p-3 mt-5">
-
-          <p class="mb-1">&copy; 2025 舞鶴高専 創造技術研究会 (S-ken) All rights reserved.</p>
-          <p class="mb-0 small">
-            運営者情報：
-            <a href="https://x.com/Flying___eagle" target="_blank" rel="noopener" class="link-light text-decoration-underline">@Flying___eagle</a>
+        <section id="about" class="mb-5">
+          <h2>私たちについて</h2>
+          <p>
+            舞鶴高専 創造技術研究会（S-ken）は、<strong>高専ロボコン全国大会 優勝</strong>と「ものづくりで仲間を笑顔にすること」を目標に活動する学生ロボット開発チームです。<br />
+            設計・加工・回路・制御・ソフトウェアまで一気通貫で自分たちの手で行い、<strong>創造力 / 技術力 / チーム力</strong>を高めながら競技に挑戦しています。
           </p>
-      </footer>
-    </div>
+          <p>
+            平日放課後と休日に部室・実習工場で活動しています。失敗を歓迎し、試作を高速に繰り返す「Try Fast」文化が根付いています。
+          </p>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="script.js"></script>
-  </body>
+        </section>
+
+        <section id="organization" class="mb-5">
+          <h2>班紹介</h2>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <h3 class="card-title">機械班</h3>
+                  <p class="card-text">ロボットの機構設計や製作を担当します。</p>
+                  <a href="mechanical.html" class="btn btn-primary">詳しく見る</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <h3 class="card-title">電気班</h3>
+                  <p class="card-text">ロボットの回路設計やプログラム開発を担当します。</p>
+                  <a href="electric.html" class="btn btn-primary">詳しく見る</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="achievements" class="mb-5">
+          <h2>これまでの実績</h2>
+          <p>過去数年の取り組みと実績</p>
+          <div class="row">
+            <div class="col-12 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="h5">実績</h3>
+                  <ul class="small mb-0">
+                    <li>高専ロボコン2026 近畿地区大会 (ミラクレーンフライ)ベスト4、奨励賞ベスト16</li>
+                    <li>高専ロボコン2026 近畿地区大会 (舞布達)マブチモーター様特別賞 </li>
+                    <li>関西春ロボコン2026 両チームともに予選リーグを突破しベスト16　1チームがベストマッチ賞</li>
+                    <li>高専ロボコン2025 近畿地区大会 鶴覚郭閣郭角確獲(かぐや) 予選1勝1敗</li>
+                    <li>高専ロボコン2025 近畿地区大会 鶴技の舞 予選2勝0敗、準決勝で敗退 特別賞（セメダイン株式会社）</li>
+                    <li>関西春ロボコン2025 両チームともに予選リーグを突破しベスト20　1チームがベストロボット賞</li>
+                    <li>高専ロボコン2024 近畿地区大会（舞鶴開催） アポロ計鶴 特別賞 （田中貴金属グループ）</li>
+                    <li>高専ロボコン2024 近畿地区大会（舞鶴開催） 系群五鶴 特別賞 （株式会社デンソー） </li>
+                    <li>関西春ロボコン2024 全22チーム中の準優勝とベスト16</li>
+                    <li>高専ロボコン2023 近畿地区大会 鋼鶴天翔 奨励賞</li>
+                    <li>高専ロボコン2023 近畿地区大会 鶴壱 特別賞（マブチモーター株式会社） </li>
+                    <li>関西春ロボコン2023 全13チーム中の準優勝とベスト8</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="sns" class="mb-5">
+          <h2>SNS・ブログ</h2>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title">創造技術研究会ブログ</h3>
+                  <ul id="blog-feed" class="list-unstyled">
+                    <li>読み込み中...</li>
+                  </ul>
+                  <a href="https://s-kenblog.blogspot.com/" target="_blank"
+                    class="btn btn-outline-primary mt-2">ブログへ</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title">X (旧Twitter)</h3>
+                  <p>日々の活動や最新情報を発信中です。</p>
+                  <a href="https://twitter.com/mnct_sken" target="_blank" rel="noopener"
+                    class="btn btn-outline-info">Xでフォロー</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title">GitHub</h3>
+                  <p>開発中のソフトウェアやプロジェクトを公開しています。</p>
+                  <a href="https://github.com/SkenHub" target="_blank" rel="noopener"
+                    class="btn btn-outline-dark">GitHubを見る</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Teams Page -->
+      <div v-if="currentPage === 'teams'">
+        <section>
+          <h2>班紹介</h2>
+          <p>創造技術研究会は <strong>機械班</strong> と <strong>電気班</strong> の2班が密に連携してロボットを完成させます。要件定義フェーズでは両班合同で競技分析とアイデア出しを行います。
+          </p>
+          <p class="small">班をまたいだ兼任も可能で、CAD設計しながらファームを書いたり、回路を作りながら加工するメンバーもいます。</p>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <h3 class="card-title">機械班</h3>
+                  <p class="card-text">機構設計・加工・組立を担当します。</p>
+                  <a href="mechanical.html" class="btn btn-primary">機械班を見る</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <h3 class="card-title">電気班</h3>
+                  <p class="card-text">回路・制御・プログラムを担当します。</p>
+                  <a href="electric.html" class="btn btn-primary">電気班を見る</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button @click="currentPage = 'home'" class="btn btn-secondary mt-3">トップページに戻る</button>
+        </section>
+      </div>
+
+      <!-- Removed inline mechanical/electric pages (now standalone HTML files) -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+
+      <p class="mb-1">&copy; 2025 舞鶴高専 創造技術研究会 (S-ken) All rights reserved.</p>
+      <p class="mb-0 small">
+        運営者情報：
+        <a href="https://x.com/Flying___eagle" target="_blank" rel="noopener"
+          class="link-light text-decoration-underline">@Flying___eagle</a>
+      </p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>
