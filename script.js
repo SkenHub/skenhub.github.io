@@ -18,29 +18,86 @@ createApp({
       }
     },
     fetchBlogFeed() {
-      fetch('https://api.rss2json.com/v1/api.json?rss_url=https://s-kenblog.blogspot.com/feeds/posts/default')
-        .then(res => res.json())
-        .then(data => {
-          const ul = document.getElementById('blog-feed');
-          if (ul) {
-            ul.innerHTML = ''; // Clear loading message
-            if (data.items) {
-              data.items.slice(0, 5).forEach(entry => {
-                const li = document.createElement('li');
-                li.innerHTML = `<a href="${entry.link}" target="_blank">${entry.title}</a>`;
-                ul.appendChild(li);
-              });
-            } else {
-               ul.innerHTML = '<li>記事を取得できませんでした。</li>';
+      const ul = document.getElementById('blog-feed');
+      if (!ul) return;
+
+      // Bloggerの公式JSONPフィードを利用して取得する
+      const callbackName = 'handleBloggerFeed_' + Math.random().toString(36).substring(2, 9);
+      const script = document.createElement('script');
+
+      // タイムアウト設定
+      const timeoutId = setTimeout(() => {
+        cleanup();
+        if (ul.innerHTML.includes('読み込み中')) {
+          ul.innerHTML = '<li>記事の取得に失敗しました。</li>';
+        }
+      }, 7000);
+
+      const cleanup = () => {
+        clearTimeout(timeoutId);
+        try {
+          delete window[callbackName];
+        } catch (_) {
+          window[callbackName] = undefined;
+        }
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      };
+
+      window[callbackName] = (data) => {
+        cleanup();
+        ul.innerHTML = '';
+        const entries = data?.feed?.entry;
+        if (entries && entries.length > 0) {
+          entries.slice(0, 5).forEach(entry => {
+            const title = entry.title?.$t || '無題';
+            const altLink = Array.isArray(entry.link)
+              ? entry.link.find(l => l.rel === 'alternate') || entry.link[0]
+              : null;
+            const href = altLink ? altLink.href : '#';
+
+            let dateStr = '';
+            if (entry.published && entry.published.$t) {
+              const d = new Date(entry.published.$t);
+              if (!isNaN(d.getTime())) {
+                const year = d.getFullYear();
+                const month = String(d.getMonth() + 1).padStart(2, '0');
+                const day = String(d.getDate()).padStart(2, '0');
+                dateStr = ` (${year}/${month}/${day})`;
+              }
             }
-          }
-        })
-        .catch(() => {
-          const ul = document.getElementById('blog-feed');
-          if (ul) {
-            ul.innerHTML = '<li>記事の取得に失敗しました。</li>';
-          }
-        });
+
+            const li = document.createElement('li');
+            li.className = 'mb-1';
+            const a = document.createElement('a');
+            a.href = href;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.textContent = title;
+            li.appendChild(a);
+
+            if (dateStr) {
+              const span = document.createElement('span');
+              span.className = 'text-muted small ms-1';
+              span.textContent = dateStr;
+              li.appendChild(span);
+            }
+
+            ul.appendChild(li);
+          });
+        } else {
+          ul.innerHTML = '<li>記事がありません。</li>';
+        }
+      };
+
+      script.src = `https://s-kenblog.blogspot.com/feeds/posts/default?alt=json-in-script&callback=${callbackName}&max-results=5`;
+      script.onerror = () => {
+        cleanup();
+        ul.innerHTML = '<li>記事の取得に失敗しました。</li>';
+      };
+
+      document.head.appendChild(script);
     }
   },
   mounted() {
