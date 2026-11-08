@@ -1,45 +1,301 @@
+/* 全体設定 */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  padding-top: 56px; /* Fixed navbar height */
+  padding-top: 56px;
   font-family: 'Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+  color: #333333;
+  background-color: #fcfcfc;
+}
+
+/* スクロール位置のオフセット設定 */
+section[id] {
+  scroll-margin-top: 70px;
+}
+
+/* ナビゲーションバー */
+.navbar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.logo-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* カルーセル */
+.carousel {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-item img {
-  height: 400px;
+  height: 420px;
   object-fit: cover;
 }
 
-section {
-  padding: 60px 0;
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 260px;
+  }
 }
 
+/* セクション設定と背景の切り替え */
+.section-block {
+  padding: 48px 0;
+}
+
+.section-alt {
+  background-color: #f4f6f8;
+  border-top: 1px solid #e5e9ec;
+  border-bottom: 1px solid #e5e9ec;
+}
+
+.section-title {
+  font-weight: 700;
+  margin-bottom: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-subtitle {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+}
+
+/* カード共通スタイル */
 .card {
-  transition: transform 0.2s;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 班紹介カードの画像 */
+.team-card-img {
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+}
+
+/* ロボット紹介カードの画像と写真なし表示 */
+.robot-img-container {
+  height: 200px;
+  background-color: #e9ecef;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  overflow: hidden;
+  position: relative;
+}
+
+.robot-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  display: block;
+}
+
+.no-photo-box {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  letter-spacing: 0.05em;
+}
+
+/* ハイライト統計ブロック */
+.stat-box {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px 16px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0d6efd;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 4px;
+}
+
+/* 技術バッジ */
+.tech-badge {
+  display: inline-block;
+  background-color: #eef2f6;
+  color: #334155;
+  font-size: 0.78rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin: 2px 4px 2px 0;
+}
+
+/* 実績カード */
+.award-year-badge {
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.award-item {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.award-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #0d6efd;
+}
+
+/* 年間スケジュール */
+.timeline-step {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  height: 100%;
+}
+
+.timeline-month {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0d6efd;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* お知らせティッカーバー */
+.news-ticker {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+/* ブログカードスタイル */
+.blog-card {
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.blog-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.09);
 }
 
-footer {
-  background-color: #343a40;
-  color: white;
-  padding: 20px 0;
+.blog-img-wrapper {
+  display: block;
+  height: 180px;
+  overflow: hidden;
+  background-color: #f1f5f9;
+  position: relative;
 }
 
-  .logo-img {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-  }
+.blog-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  display: block;
+}
 
-.footer-logo {
-  height: 50px;
-  }
+.blog-card:hover .blog-card-img {
+  transform: scale(1.05);
+}
 
+.blog-no-photo {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.blog-title-link:hover {
+  color: #0d6efd !important;
+}
+
+/* ギャラリー画像 */
 .gallery-img {
   width: 100%;
   height: 220px;
   object-fit: cover;
-  background: #eee;
+  background-color: #eee;
+  transition: transform 0.25s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.02);
+}
+
+/* フッター */
+footer {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  padding: 36px 0 24px 0;
+}
+
+footer .text-muted {
+  color: #cbd5e1 !important;
+}
+
+footer p {
+  color: #e2e8f0;
+}
+
+footer a.link-light {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+footer a.link-light:hover {
+  color: #38bdf8 !important;
+}
+
+.footer-logo {
+  height: 44px;
+  width: auto;
 }
