@@ -104,15 +104,15 @@ createApp({
 
           ticker.innerHTML = `
             <div class="d-flex flex-wrap align-items-center">
-              <span class="badge bg-danger me-2 my-1">最新日誌</span>
-              <span class="text-muted small me-2 my-1">${firstDate}</span>
-              <a href="${firstHref}" target="_blank" rel="noopener" class="text-decoration-none fw-bold text-dark my-1 flex-grow-1 text-truncate">${firstTitle}</a>
-              <a href="${firstHref}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-primary ms-sm-auto my-1">記事を読む</a>
+              <span class="ticker-tag me-2 my-1">NEWS</span>
+              <span class="text-secondary small me-2 my-1">${firstDate}</span>
+              <a href="${firstHref}" target="_blank" rel="noopener" class="text-decoration-none text-dark fw-semibold my-1 flex-grow-1 text-truncate">${firstTitle}</a>
+              <a href="${firstHref}" target="_blank" rel="noopener" class="text-primary small text-decoration-none ms-sm-auto my-1">記事を読む &rarr;</a>
             </div>
           `;
         }
 
-        // カードコンテナへのレンダリング (最新3件または4件)
+        // カードコンテナへのレンダリング (最新3件)
         if (container) {
           container.innerHTML = '';
           entries.slice(0, 3).forEach(entry => {
@@ -179,16 +179,16 @@ createApp({
             const col = document.createElement('div');
             col.className = 'col-md-4';
             col.innerHTML = `
-              <div class="card h-100 shadow-sm blog-card">
+              <div class="blog-item">
                 ${imgBlock}
-                <div class="card-body d-flex flex-column">
-                  <div class="text-muted small mb-2">${dateStr}</div>
-                  <h3 class="card-title h6 fw-bold mb-2">
-                    <a href="${href}" target="_blank" rel="noopener" class="text-dark text-decoration-none blog-title-link">${title}</a>
+                <div class="blog-body">
+                  <div class="blog-date">${dateStr}</div>
+                  <h3 class="blog-title">
+                    <a href="${href}" target="_blank" rel="noopener">${title}</a>
                   </h3>
-                  <p class="card-text small text-secondary flex-grow-1 mb-3">${snippet}</p>
+                  <p class="blog-snippet">${snippet}</p>
                   <div class="mt-auto pt-2 border-top">
-                    <a href="${href}" target="_blank" rel="noopener" class="link-primary small text-decoration-none fw-bold">続きを読む &rarr;</a>
+                    <a href="${href}" target="_blank" rel="noopener" class="text-primary small text-decoration-none fw-semibold">続きを読む &rarr;</a>
                   </div>
                 </div>
               </div>
